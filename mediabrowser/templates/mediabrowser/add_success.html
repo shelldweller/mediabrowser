@@ -1,0 +1,14 @@
+{% extends "mediabrowser/base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<script>
+    $(function(){
+        MEDIABROWSER.insertFile('{{ asset.file.url }}');
+        window.close();
+    });
+</script>
+
+{% endblock %}
+

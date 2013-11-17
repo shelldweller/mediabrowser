@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load i18n %}
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>{% trans "Media browser" %}</title>    
+    <script src="{{ STATIC_URL }}mediabrowser/js/jquery-1.9.1.js"></script>
+    <script src="{{ STATIC_URL }}mediabrowser/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="{{ STATIC_URL }}mediabrowser/js/mediabrowser.js"></script>
+    {% block head %}{% endblock %}
+    {% include "mediabrowser/includes/css.html" %}
+    {% include "mediabrowser/includes/head.html" %}
+</head>
+<body>
+    <div id="MediaBrowserNavigation">
+        {% if asset_type == "img" %}
+            <a href="{% url 'mediabrowser-add-image' %}?{{ QUERY_STRING }}">{% trans "Upload" %}</a>
+            <a href="{% url 'mediabrowser-image-list' %}?{{ QUERY_STRING }}">{% trans "Browse images" %}</a>
+        {% elif asset_type == "doc" %}
+            <a href="{% url 'mediabrowser-add-document' %}?{{ QUERY_STRING }}">{% trans "Upload" %}</a>
+            <a href="{% url 'mediabrowser-document-list' %}?{{ QUERY_STRING }}">{% trans "Browse documents" %}</a>
+            <a href="{% url 'mediabrowser-image-document-list' %}?{{ QUERY_STRING }}">{% trans "Browse images" %}</a>
+            {% if page_selector_url %}
+            <a href="{% url page_selector_url %}?{{ QUERY_STRING }}">{% trans "Browse content" %}</a>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div id="MediaBrowserContent">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

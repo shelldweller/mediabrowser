@@ -1,0 +1,13 @@
+{% extends "mediabrowser/base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="file" id="id_file">
+    <input id="UploadFile" type="submit" value="{% trans "Choose a file on your computer" %}">
+</form>
+
+{% endblock %}
+

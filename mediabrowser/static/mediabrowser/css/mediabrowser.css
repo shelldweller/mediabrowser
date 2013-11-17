@@ -1,0 +1,139 @@
+body {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+row {
+    overflow: auto;
+}
+
+input, button, .button {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 2px 4px 2px 4px;
+    font-size: 1em;
+}
+
+.long {
+    width: 400px;
+}
+
+#MediaBrowserNavigation {
+    padding: 8px 8px 0 8px;
+    margin-bottom: 10px;
+    background-color: #eaeaea;
+    border-bottom: 1px solid #ccc;
+}
+#MediaBrowserNavigation a {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 6px 12px 6px 12px;
+    position: relative;
+    top: 1px;
+    text-decoration: none;
+    color: #666;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(to bottom, #fafafa, #ededed);
+}
+#MediaBrowserNavigation a.active {
+    background: none;
+    background-color: #fff;
+    border-bottom-color: #fff;
+}
+
+#MediaBrowserContent {
+    
+}
+
+#MediaBrowserContent .file {
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 4px;
+    border-radius: 3px;
+    color: #666;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    float: left;
+    margin: 4px;
+}
+
+#MediaBrowserContent .file.active {
+    border-color: #aaa;
+    background-color: #eaeaea;
+}
+
+.file img {
+    display: block;
+    margin: auto;
+}
+.file .name {
+    font-size: 0.8em;
+    text-align: center;
+}
+
+#ButtonBar {
+    clear: both;
+    display: block;
+    width: 100%;
+    background-color: #eaeaea;
+    padding: 8px 0 8px 0;
+    border-top: 1px solid #ccc;
+    overflow: auto;
+    position: fixed;
+    bottom: 0;
+}
+
+#InsertFile {
+    float: right;
+    margin-right: 8px;
+}
+
+#InsertFile.active, #UploadFile {
+    text-shadow: 0 -1px 0 #55830c;
+    color: #fff;
+    border-color: #62a60a #62a60a #4d9200;
+    background-color: #69b10b;
+    background: linear-gradient(to bottom,#9ad717,#69b10b);
+}
+#UploadFile {
+    display: block;
+    margin: auto;
+    margin-top: 100px;
+    padding: 12px;
+}
+#DeleteFile {
+    color: #222;
+    float: left;
+    margin-left: 8px;
+}
+
+#InsertFile, #DeleteFile {
+    padding: 6px 12px 6px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+#InsertFile.inactive, #DeleteFile.inactive {
+    color: #999;
+    cursor: default;
+}
+
+#InsertFile.active, #DeleteFile.active {
+    cursor: pointer;
+}
+
+#ConfirmDeleteDialog {
+    display: none;
+}
+
+#id_file {
+    display: none;
+}
+
+
+#Search {
+    float: right;
+}

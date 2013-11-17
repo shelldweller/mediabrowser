@@ -1,0 +1,27 @@
+{% extends 'mediabrowser/base.html' %}
+{% load i18n %}
+
+{% block content %}
+    {% include "mediabrowser/includes/asset-listing.html" %}
+    
+    <div id="ButtonBar">
+        <a id="InsertFile" class="inactive button" href="#">{% trans "Insert" %}</a>
+        <a id="DeleteFile" class="inactive button" href="#">{% trans "Delete" %}</a>
+    </div>    
+
+    
+    <div id="ConfirmDeleteDialog" title="{% trans 'Delete this file?' %}">
+        <p>{% trans "Are you sure you would like to delete this file:" %}</p>
+        <p id="FileToBeDeletedContent"></p>
+        <form action="{% url 'mediabrowser-delete' %}" method="post" id="AssetDeletionForm">
+            {% csrf_token %}
+            <input type="hidden" name="asset_id" id="FileIdToBeDeleted">
+            <input type="submit" value="{% trans 'Delete' %}">
+            <a href="#" class="ui-dialog-cancel">{% trans "Cancel" %}</a>
+        </form>
+    </div>
+
+
+{% endblock %}
+    
+

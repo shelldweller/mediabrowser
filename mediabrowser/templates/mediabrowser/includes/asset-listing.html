@@ -1,0 +1,14 @@
+{% load thumbnail %}
+{% load i18n %}
+
+{% for asset in assets %}
+    <div class="file mb-selectable {{ asset.type }} {{ asset.ext }}" title="{{ asset }} ({{ asset.file.size|filesizeformat }})" id="File{{ asset.id }}" data-id="{{ asset.id }}" data-url="{{ asset.file.url }}">
+        {% if asset.type == "img" %}
+            {% thumbnail asset.file '100x67' as preview %}
+            {% if preview %}<img src="{{ MEDIA_URL }}{{ preview }}">{% endif %}
+        {% endif %}
+        <div class="name">{{ asset }}</div>
+    </div>
+{% empty %}
+    <p>{% trans "There are no files yet." %}</p>
+{% endfor %}
