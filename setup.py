@@ -11,6 +11,15 @@ setup(
     author_email='sergiy@kuzmenko.org',
     url='https://github.com/shelldweller/mediabrowser',
     packages=['mediabrowser'],
+    package_data={"mediabrowser":[
+        "static/mediabrowser/css/smoothness/images/*",
+        "static/mediabrowser/css/smoothness/*.css",
+        "static/mediabrowser/css/*.css",
+        "static/mediabrowser/img/*.png",
+        "static/mediabrowser/js/*.js",
+        "templates/mediabrowser/includes/*.html",
+        "templates/mediabrowser/*.html",
+        ]},
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Plugins",
