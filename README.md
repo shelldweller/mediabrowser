@@ -4,8 +4,7 @@ Media browser for Django.
 
 
 By default mediabrowser uses [easy-thumbnails](https://github.com/SmileyChris/easy-thumbnails)
-for crating image thumbnails. Unless you plan to use your own thumbnailing tool you need to
-install easy-thumbnails too.
+for creating image thumbnails.
 
 In settings.py:
 
@@ -13,6 +12,7 @@ In settings.py:
 # add mediabrowser to INSTALLED_APPS:
 INSTALLED_APPS = (
     ...
+    'easy_thumbnails',
     'mediabrowser',
     ...
 )
