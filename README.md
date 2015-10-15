@@ -29,6 +29,10 @@ MEDIABROWSER_PAGE_SELECTOR_URL = "my-cms-url-content-selector-name"
 # Function for user access to mediabrowser
 # (defaults to user.is_staff)
 MEDIABROWSER_USER_PASSES_TEST = lambda user:user.is_authenticated
+
+# Automatically resize uploaded images to fit within given dimensions
+# (default to None, i.e. no resizing)
+MEDIABROWSER_MAX_IMAGE_SIZE = (800, 400)
 ```
 
 In urls.py:

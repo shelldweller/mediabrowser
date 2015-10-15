@@ -40,14 +40,21 @@ class Asset(models.Model):
         else:
             self.type = "doc"
         
-        if self.type == "img":
-            # set dimentions
-            # im = Image.open(os.path.join(settings.MEDIA_ROOT, self.file.name))
-            im = Image.open(self.file.file)
-            size = im.size
-            self.width,self.height = size
+        if self.type == "img" and not self.id:
+            self.file.open('r+b')
+            img = Image.open(self.file)
+            (imgW, imgH) = img.size
+            max_size = getattr(settings, "MEDIABROWSER_MAX_IMAGE_SIZE", None)
+            if max_size:
+                if imgW > max_size[0] or imgH > max_size[1]:    
+                    ratio = max(float(imgW)/max_size[0], float(imgH)/max_size[1])
+                    img = img.resize((int(imgW/ratio), int(imgH/ratio)), Image.ANTIALIAS)
+                    self.file.seek(0)
+                    img.save(self.file)
+            
+            self.width, self.height = img.size
         
-        super(Asset, self).save(*args, **kwargs)
+        super(Asset, self).save(*args, **kwargs)            
     
     def __unicode__(self):
         if self.type == "img":
