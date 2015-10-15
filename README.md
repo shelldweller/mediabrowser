@@ -1,11 +1,10 @@
 Media browser for Django.
 
-Setup
------
+# Setup
+
 
 By default mediabrowser uses [easy-thumbnails](https://github.com/SmileyChris/easy-thumbnails)
-for crating image thumbnails. Unless you plan to use your own thumbnailing tool you need to
-install easy-thumbnails too.
+for creating image thumbnails.
 
 In settings.py:
 
@@ -13,6 +12,7 @@ In settings.py:
 # add mediabrowser to INSTALLED_APPS:
 INSTALLED_APPS = (
     ...
+    'easy_thumbnails',
     'mediabrowser',
     ...
 )
@@ -44,11 +44,10 @@ After having added ```mediabrowser``` to ```INSTALLED_APPS``` run ```./manage.py
 
 
 
-Controlling mediabrowser access
--------------------------------
+# Controlling mediabrowser access
 
-By default media browser access is allowed for any authenticated stuff user
-(i.e., ```user.is_stuff == True```). If this is not
+By default media browser access is allowed for any authenticated staff user
+(i.e., ```user.is_staff == True```). If this is not
 what you need you could do one of the following:
 
 * Set ```MEDIABROWSER_USER_PASSES_TEST```. It should be a callable that takes user object as argument
@@ -56,8 +55,7 @@ and returns boolean. It is a single acces control option for uploading, browsing
 * Manually decorate class views inside your own URL conf.
 
 
-Integrating your CMS content browser
-------------------------------------
+# Integrating your CMS content browser
 
 To integrate mediabrowser with your custom CMS to be able to select your CMS's content
 to link to, do the following:
@@ -87,8 +85,7 @@ context = {
 }
 ```
 
-Customizing appearance
-----------------------
+# Customizing appearance
 
 To override CSS definitions create your own ```mediabrowser/includes/css.html``` and include your own CSS.
 
@@ -97,11 +94,26 @@ would like to use your own thumbnailing engine override ```mediabrowser/includes
 
 
 
-WYSIWYG integration
--------------------
+# WYSIWYG integration
 
-By default mediabrowser is designed to work with CKEdit. Integrating it with another editor
-should be fairly easy. Just provide your own function for inserting files:
+
+## CKEditor
+
+In Django template:
+
+```html
+<script>
+    // To activate image broswer:
+    CKEDITOR.config.filebrowserImageBrowseUrl = "{% url 'mediabrowser-add-image' %}";
+    
+    // To activate file browser:
+    CKEDITOR.config.filebrowserLinkBrowseUrl = "{% url 'mediabrowser-add-document' %}";
+</script>
+```
+
+For details see [CKEditor documentation](http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-filebrowserImageBrowseUrl).
+
+## Custom integration
 
 ```javascript
 MEDIABROWSER.insertFile = function(asset_url) {
