@@ -7,6 +7,7 @@ setup(
     name='mediabrowser',
     version=mediabrowser.VERSION,
     description='Django media browser for WYSIWYG HTML editor',
+    install_requires=["easy_thumbnails"],
     author='Sergiy Kuzmenko',
     author_email='sergiy@kuzmenko.org',
     url='https://github.com/shelldweller/mediabrowser',
@@ -19,6 +20,7 @@ setup(
         "static/mediabrowser/js/*.js",
         "templates/mediabrowser/includes/*.html",
         "templates/mediabrowser/*.html",
+        "tests/test-data/*.png",
         ]},
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -30,5 +32,6 @@ setup(
         "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
         "Topic :: Multimedia",
         "Topic :: Multimedia :: Graphics",
+        "License :: OSI Approved :: MIT License",
     ],
 )
