@@ -1,5 +1,7 @@
 from django.views.generic import ListView, CreateView, View
 from django.core.urlresolvers import reverse, reverse_lazy
+from django.core.exceptions import PermissionDenied
+from django.conf import settings
 from django.contrib.auth.decorators import user_passes_test
 from django.http import QueryDict, HttpResponse
 import json
@@ -16,14 +18,24 @@ from .constants import MEDIABROWSER_PAGE_SELECTOR_URL, MEDIABROWSER_USER_PASSES_
 
 _ = lambda x:x
 
-auth_required = user_passes_test(MEDIABROWSER_USER_PASSES_TEST)
+def auth_required(function, perm=None):
+    """
+    If settings.MEDIABROWSER_CHECK_USER_PERMISSIONS is set to True and perm is not None,
+    will verify user permissions. Otherwise will validate user access via
+    settings.MEDIABROWSER_USER_PASSES_TEST
+    """
+    def check_perm(user):
+        if perm and getattr(settings, "MEDIABROWSER_CHECK_USER_PERMISSIONS", False):
+            if user.has_perm(perm):
+                return True
+            raise PermissionDenied
+        else:
+            return MEDIABROWSER_USER_PASSES_TEST(user)
+    return user_passes_test(check_perm)(function)
 
-# TODO: need to keep URL params
+
 class StickyGetParamsMixin(object):
     """ Mixin that persists GET params between requests. """
-    # This is primarily required because file upload form is
-    # not directly ajaxable and file APIs are not yet fully
-    # supported by all those explorer rants out there
     
     def get_success_url(self):
         """ Updates success URL with GET params. """
@@ -38,6 +50,13 @@ class StickyGetParamsMixin(object):
         context = super(StickyGetParamsMixin, self).get_context_data(*args, **kwargs)
         context['QUERY_STRING'] = self.request.GET.urlencode()
         context['page_selector_url'] = MEDIABROWSER_PAGE_SELECTOR_URL
+        if getattr(settings, "MEDIABROWSER_CHECK_USER_PERMISSIONS", False):
+            context['can_upload'] = self.request.user.has_perm('mediabrowser.add_asset')
+            context['can_delete'] = self.request.user.has_perm('mediabrowser.delete_asset')
+        else:
+            context['can_upload'] = True
+            context['can_delete'] = True
+
         return context
     
 
@@ -105,13 +124,13 @@ class BaseAssetAddView(StickyGetParamsMixin, CreateView):
 class ImageAddView(AssetTypeMixin, BaseAssetAddView):
     asset_type = "img"
     
-image_add_view = auth_required(ImageAddView.as_view())
+image_add_view = auth_required(ImageAddView.as_view(), "mediabrowser.add_asset")
 
 
 class DocumentAddView(AssetTypeMixin, BaseAssetAddView):
     asset_type = "doc"
     
-document_add_view = auth_required(DocumentAddView.as_view())
+document_add_view = auth_required(DocumentAddView.as_view(), "mediabrowser.add_asset")
 
 
 
@@ -131,5 +150,5 @@ class AssetDeleteView(JsonResponseMixin, View):
         asset.delete()
         return self.response({"status":"ok", "id":asset_id})
 
-asset_delete_view = auth_required(AssetDeleteView.as_view())
+asset_delete_view = auth_required(AssetDeleteView.as_view(), "mediabrowser.delete_asset")
 

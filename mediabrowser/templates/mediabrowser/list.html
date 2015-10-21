@@ -6,10 +6,10 @@
     
     <div id="ButtonBar">
         <a id="InsertFile" class="inactive button" href="#">{% trans "Insert" %}</a>
-        <a id="DeleteFile" class="inactive button" href="#">{% trans "Delete" %}</a>
+        {% if can_delete %}<a id="DeleteFile" class="inactive button" href="#">{% trans "Delete" %}</a>{% endif %}
     </div>    
 
-    
+    {% if can_delete %}
     <div id="ConfirmDeleteDialog" title="{% trans 'Delete this file?' %}">
         <p>{% trans "Are you sure you would like to delete this file:" %}</p>
         <p id="FileToBeDeletedContent"></p>
@@ -20,7 +20,7 @@
             <a href="#" class="ui-dialog-cancel">{% trans "Cancel" %}</a>
         </form>
     </div>
-
+    {% endif %}
 
 {% endblock %}
     

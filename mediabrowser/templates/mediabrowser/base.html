@@ -14,10 +14,10 @@
 <body>
     <div id="MediaBrowserNavigation">
         {% if asset_type == "img" %}
-            <a href="{% url 'mediabrowser-add-image' %}?{{ QUERY_STRING }}">{% trans "Upload" %}</a>
+            {% if can_upload %}<a href="{% url 'mediabrowser-add-image' %}?{{ QUERY_STRING }}">{% trans "Upload" %}</a>{% endif %}
             <a href="{% url 'mediabrowser-image-list' %}?{{ QUERY_STRING }}">{% trans "Browse images" %}</a>
         {% elif asset_type == "doc" %}
-            <a href="{% url 'mediabrowser-add-document' %}?{{ QUERY_STRING }}">{% trans "Upload" %}</a>
+            {% if can_upload %}<a href="{% url 'mediabrowser-add-document' %}?{{ QUERY_STRING }}">{% trans "Upload" %}</a>{% endif %}
             <a href="{% url 'mediabrowser-document-list' %}?{{ QUERY_STRING }}">{% trans "Browse documents" %}</a>
             <a href="{% url 'mediabrowser-image-document-list' %}?{{ QUERY_STRING }}">{% trans "Browse images" %}</a>
             {% if page_selector_url %}

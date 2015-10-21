@@ -30,6 +30,10 @@ MEDIABROWSER_PAGE_SELECTOR_URL = "my-cms-url-content-selector-name"
 # (defaults to user.is_staff)
 MEDIABROWSER_USER_PASSES_TEST = lambda user:user.is_authenticated
 
+# Require mediabrowser to check user permissions
+# (defaults to False)
+MEDIABROWSER_CHECK_USER_PERMISSIONS = True
+
 # Automatically resize uploaded images to fit within given dimensions
 # (default to None, i.e. no resizing)
 MEDIABROWSER_MAX_IMAGE_SIZE = (800, 400)
@@ -50,13 +54,19 @@ After having added ```mediabrowser``` to ```INSTALLED_APPS``` run ```./manage.py
 
 # Controlling mediabrowser access
 
-By default media browser access is allowed for any authenticated staff user
-(i.e., ```user.is_staff == True```). If this is not
-what you need you could do one of the following:
+By default full media browser access is allowed for any authenticated staff user
+(i.e., ```user.is_staff == True```). You can use the following settings to refine user access
+rules:
 
-* Set ```MEDIABROWSER_USER_PASSES_TEST```. It should be a callable that takes user object as argument
-and returns boolean. It is a single acces control option for uploading, browsing and deletion.
-* Manually decorate class views inside your own URL conf.
+Set ```MEDIABROWSER_USER_PASSES_TEST```. It should be a callable that takes user object as argument
+and returns Boolean. It is a single access control option for uploading, browsing and deletion. Example:
+
+```python
+MEDIABROWSER_USER_PASSES_TEST = lambda user: user.has_perm("mycms.change_content")
+```
+
+Set ```MEDIABROWSER_CHECK_USER_PERMISSIONS = True```. This will ensure user must have
+explicit permissions to delete or add assets.
 
 
 # Integrating your CMS content browser
