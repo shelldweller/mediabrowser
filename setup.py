@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
-from distutils.core import setup
+from setuptools import setup
 import mediabrowser
+
 
 setup(
     name='mediabrowser',
@@ -12,7 +13,11 @@ setup(
     author_email='sergiy@kuzmenko.org',
     url='https://github.com/shelldweller/mediabrowser',
     packages=['mediabrowser'],
+    license="MIT",
+    platforms=['any'],
+    zip_safe=False,
     package_data={"mediabrowser":[
+        "README.md"
         "static/mediabrowser/css/smoothness/images/*",
         "static/mediabrowser/css/smoothness/*.css",
         "static/mediabrowser/css/*.css",
@@ -33,5 +38,8 @@ setup(
         "Topic :: Multimedia",
         "Topic :: Multimedia :: Graphics",
         "License :: OSI Approved :: MIT License",
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
     ],
 )
