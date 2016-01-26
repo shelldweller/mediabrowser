@@ -3,7 +3,10 @@
 
 {% block content %}
     {% include "mediabrowser/includes/asset-listing.html" %}
-    
+{% endblock %}
+
+
+{% block footer %}
     <div id="ButtonBar">
         <a id="InsertFile" class="inactive button" href="#">{% trans "Insert" %}</a>
         {% if can_delete %}<a id="DeleteFile" class="inactive button" href="#">{% trans "Delete" %}</a>{% endif %}
@@ -21,7 +24,4 @@
         </form>
     </div>
     {% endif %}
-
 {% endblock %}
-    
-
