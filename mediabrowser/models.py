@@ -11,7 +11,7 @@ _ = lambda x:x
 class Asset(models.Model):
     name = models.TextField(_("name"), max_length=120)
     file = models.FileField(_("file"), upload_to=MEDIABROWSER_UPLOAD_TO)
-    type = models.CharField(_("type"), max_length="16", choices=ASSET_TYPE_CHOICES)
+    type = models.CharField(_("type"), max_length=16, choices=ASSET_TYPE_CHOICES)
     ext = models.CharField(_("type"), max_length=40)
     uploaded_on = models.DateTimeField(_("uploaded on"), auto_now_add=True)
     uploaded_by = models.CharField(_("uploaded by"), max_length=80, blank=True)
