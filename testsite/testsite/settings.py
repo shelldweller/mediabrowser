@@ -1,7 +1,9 @@
 import sys
 import os.path
 
-DEBUG = False
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 SECRET_KEY = 'Mary had a little lamb. His fleece was white as snow.'
@@ -10,20 +12,23 @@ SECRET_KEY = 'Mary had a little lamb. His fleece was white as snow.'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': '',                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(BASE_DIR, "data", "db.sqlite3"),
     }
 }
 
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = os.path.dirname(__file__) + '/test-data/'
+MEDIA_ROOT = BASE_DIR + '/testsite/test-data/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = '/media/'
 
+STATIC_URL = "/static/"
+
+MEDIABROWSER_USER_PASSES_TEST = lambda x:True
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -60,6 +65,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.auth',
     #'django.contrib.admin',
+    'easy_thumbnails',
     'mediabrowser',
 
 )
