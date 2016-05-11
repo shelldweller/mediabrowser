@@ -13,20 +13,10 @@ setup(
     author_email='sergiy@kuzmenko.org',
     url='https://github.com/shelldweller/mediabrowser',
     packages=['mediabrowser'],
+    include_package_data=True,
     license="MIT",
     platforms=['any'],
     zip_safe=False,
-    package_data={"mediabrowser":[
-        "README.md"
-        "static/mediabrowser/css/smoothness/images/*",
-        "static/mediabrowser/css/smoothness/*.css",
-        "static/mediabrowser/css/*.css",
-        "static/mediabrowser/img/*.png",
-        "static/mediabrowser/js/*.js",
-        "templates/mediabrowser/includes/*.html",
-        "templates/mediabrowser/*.html",
-        "tests/test-data/*.png",
-        ]},
     classifiers=[
         "Development Status :: 4 - Beta",
         "Environment :: Plugins",
