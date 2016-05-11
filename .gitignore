@@ -1,5 +1,6 @@
 *.pyc
 testsite/testsite/test-data
+testsite/data
 build
 dist
 mediabrowser.egg-info
