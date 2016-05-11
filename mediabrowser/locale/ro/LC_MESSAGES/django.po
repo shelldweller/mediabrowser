@@ -1,0 +1,103 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-08 21:33-0500\n"
+"PO-Revision-Date: 2016-03-08 21:37-0500\n"
+"Last-Translator: Sergiy Kuzmenko <s.kuzmenko@gmail.com>\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
+"X-Generator: Poedit 1.5.7\n"
+
+#: models.py:12
+msgid "name"
+msgstr "nume"
+
+#: models.py:13
+msgid "file"
+msgstr "fișier"
+
+#: models.py:14 models.py:15
+msgid "type"
+msgstr "tip"
+
+#: models.py:16
+msgid "uploaded on"
+msgstr "încărcat pe dată de"
+
+#: models.py:17
+msgid "uploaded by"
+msgstr "încărcat de câtre"
+
+#: models.py:18
+msgid "width"
+msgstr "lațime"
+
+#: models.py:19
+msgid "height"
+msgstr "înalțime"
+
+#: templates/mediabrowser/add.html:9
+msgid "Choose a file on your computer"
+msgstr "Alegeţi un fişier din computerul dvs."
+
+#: templates/mediabrowser/base.html:6
+msgid "Media browser"
+msgstr "Browser media"
+
+#: templates/mediabrowser/base.html:17 templates/mediabrowser/base.html:20
+msgid "Upload"
+msgstr "Încărcare"
+
+#: templates/mediabrowser/base.html:18 templates/mediabrowser/base.html:22
+msgid "Browse images"
+msgstr "Răsfoire imagini"
+
+#: templates/mediabrowser/base.html:21
+msgid "Browse documents"
+msgstr "Răsfoire documente"
+
+#: templates/mediabrowser/base.html:24
+msgid "Browse content"
+msgstr "Răsfoire conținut"
+
+#: templates/mediabrowser/includes/asset-listing.html:13
+msgid "There are no files yet."
+msgstr "Nu există nici un fișier."
+
+#: templates/mediabrowser/list.html:11
+msgid "Insert"
+msgstr "Inserare"
+
+#: templates/mediabrowser/list.html:12 templates/mediabrowser/list.html:22
+msgid "Delete"
+msgstr "Ştergere"
+
+#: templates/mediabrowser/list.html:16
+msgid "Delete this file?"
+msgstr "Ștergerea fișierului?"
+
+#: templates/mediabrowser/list.html:17
+msgid "Are you sure you would like to delete this file:"
+msgstr "Confirmați ștergerea acestui fișier:"
+
+#: templates/mediabrowser/list.html:23
+msgid "Cancel"
+msgstr "Anulare"
+
+#: views.py:145
+msgid "Please select a file to be deleted."
+msgstr "Alegerea fișierului pentru ștergere."
+
+#: views.py:149
+msgid "Invalid asset id."
+msgstr "Id obiectului nu e valabil."

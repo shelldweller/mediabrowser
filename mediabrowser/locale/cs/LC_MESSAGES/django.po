@@ -1,0 +1,103 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-08 21:01-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: models.py:12
+msgid "name"
+msgstr ""
+
+#: models.py:13
+msgid "file"
+msgstr ""
+
+#: models.py:14 models.py:15
+msgid "type"
+msgstr ""
+
+#: models.py:16
+msgid "uploaded on"
+msgstr ""
+
+#: models.py:17
+msgid "uploaded by"
+msgstr ""
+
+#: models.py:18
+msgid "width"
+msgstr ""
+
+#: models.py:19
+msgid "height"
+msgstr ""
+
+#: templates/mediabrowser/add.html:9
+msgid "Choose a file on your computer"
+msgstr "Zvolte soubor v počítači"
+
+#: templates/mediabrowser/base.html:6
+msgid "Media browser"
+msgstr "Prohlížeč médií"
+
+#: templates/mediabrowser/base.html:17 templates/mediabrowser/base.html:20
+msgid "Upload"
+msgstr "Nahrát"
+
+#: templates/mediabrowser/base.html:18 templates/mediabrowser/base.html:22
+msgid "Browse images"
+msgstr "Procházet obrázky"
+
+#: templates/mediabrowser/base.html:21
+msgid "Browse documents"
+msgstr ""
+
+#: templates/mediabrowser/base.html:24
+msgid "Browse content"
+msgstr ""
+
+#: templates/mediabrowser/includes/asset-listing.html:13
+msgid "There are no files yet."
+msgstr ""
+
+#: templates/mediabrowser/list.html:11
+msgid "Insert"
+msgstr "Vložit"
+
+#: templates/mediabrowser/list.html:12 templates/mediabrowser/list.html:22
+msgid "Delete"
+msgstr "Odstranit"
+
+#: templates/mediabrowser/list.html:16
+msgid "Delete this file?"
+msgstr ""
+
+#: templates/mediabrowser/list.html:17
+msgid "Are you sure you would like to delete this file:"
+msgstr ""
+
+#: templates/mediabrowser/list.html:23
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: views.py:145
+msgid "Please select a file to be deleted."
+msgstr ""
+
+#: views.py:149
+msgid "Invalid asset id."
+msgstr ""
