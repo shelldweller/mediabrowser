@@ -1,6 +1,7 @@
 from django.views.generic import ListView, CreateView, View
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.core.exceptions import PermissionDenied
+from django.utils.translation import activate
 from django.conf import settings
 from django.contrib.auth.decorators import user_passes_test
 from django.http import QueryDict, HttpResponse
@@ -32,6 +33,15 @@ def auth_required(function, perm=None):
         else:
             return MEDIABROWSER_USER_PASSES_TEST(user)
     return user_passes_test(check_perm)(function)
+
+
+class LocaleActivationMixing(object):
+    """ Activates locale based on query string parameter. """
+    def dispatch(self, request, *args, **kwargs):
+        lang = request.GET.get("langCode", None)
+        if lang:
+            activate(lang)
+        return super(LocaleActivationMixing, self).dispatch(request, *args, **kwargs)
 
 
 class StickyGetParamsMixin(object):
@@ -74,7 +84,7 @@ class AssetTypeMixin(object):
         return context
 
 
-class BaseAssetListView(StickyGetParamsMixin, AssetTypeMixin, ListView):
+class BaseAssetListView(LocaleActivationMixing, StickyGetParamsMixin, AssetTypeMixin, ListView):
     template_name = "mediabrowser/list.html"
     model = Asset
     context_object_name = "assets"
@@ -102,7 +112,7 @@ class DocumentListView(BaseAssetListView):
 
 document_list_view = auth_required(DocumentListView.as_view())
 
-class BaseAssetAddView(StickyGetParamsMixin, CreateView):
+class BaseAssetAddView(LocaleActivationMixing, StickyGetParamsMixin, CreateView):
     model = Asset
     form_class = AssetForm
     template_name = "mediabrowser/add.html"
@@ -134,7 +144,7 @@ document_add_view = auth_required(DocumentAddView.as_view(), "mediabrowser.add_a
 
 
 
-class AssetDeleteView(JsonResponseMixin, View):
+class AssetDeleteView(LocaleActivationMixing, JsonResponseMixin, View):
     def post(self, request):
         return self.delete(request)
     
